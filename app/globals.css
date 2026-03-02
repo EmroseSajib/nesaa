@@ -28,9 +28,23 @@
     bagRise 1s ease-out forwards,
     float 4s ease-in-out infinite 1s;
 }
+/* Glassmorphism utility */
+.glass {
+  background: rgba(26, 26, 26, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.glass-dark {
+  background: rgba(15, 15, 15, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(212, 175, 55, 0.08);
+}
 :root {
   /* Luxury Neutral Palette */
-  --background: 250 15% 98%;
+  --background: black;
   --foreground: 10 8% 16%;
   --card: 0 0% 100%;
   --card-foreground: 10 8% 16%;
@@ -120,6 +134,7 @@
 
 @theme inline {
   --font-sans: "Geist", "Geist Fallback";
+  /* --font-offer: "Barrio", "For Offer Fallback"; */
   --font-mono: "Geist Mono", "Geist Mono Fallback";
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
@@ -164,6 +179,6 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground ;
   }
 }

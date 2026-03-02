@@ -3,6 +3,7 @@
 import { ProductCard } from "@/components/ProductCard";
 import { categories, products, testimonials } from "@/lib/mockData";
 import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { useLanguage } from "./LanguageContext";
@@ -15,7 +16,7 @@ export default function Home() {
   return (
     <div className="w-full">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-[#f8f5f0] via-[#f1ece5] to-[#e9e2d8] text-gray-900">
+      <section className="relative min-h-screen flex items-center overflow-hidden  text-gray-900">
         {/* Soft Glow Background */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-amber-400/20 blur-3xl rounded-full" />
 
@@ -23,15 +24,15 @@ export default function Home() {
           {/* LEFT CONTENT */}
           <div className="space-y-8">
             {/* Limited Offer Badge */}
-            <span className="inline-block px-5 py-2 text-sm font-semibold bg-red-600 text-white rounded-full tracking-wide animate-pulse">
+            {/* <span className="inline-block px-5 py-2 text-sm font-semibold bg-red-600 text-white rounded-full tracking-wide animate-pulse">
               🔥 Limited Black Friday Deal
-            </span>
+            </span> */}
 
             {/* Heading */}
-            <h1 className="text-5xl lg:text-6xl font-extrabold leading-tight">
-              Black Friday
+            <h1 className=" text-5xl lg:text-6xl font-extrabold leading-tight">
+              <span className="font-offer text-8xl">Black Friday</span>
               <br />
-              <span className="text-gray-900">Super Sale</span>
+              <span className="text-gray-900 font-offer">Super Sale</span>
             </h1>
 
             {/* Subtitle */}
@@ -44,7 +45,7 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-4">
               <a
                 href="/shop"
-                className="px-8 py-4 bg-red-600 hover:bg-red-700 transition-all duration-300 rounded-lg font-semibold shadow-lg hover:shadow-red-600/40 hover:scale-105"
+                className="px-8 py-4 bg-[#F6E3B8] hover:bg-gray-900 hover:text-white transition-all duration-300 rounded-lg font-semibold shadow-lg hover:shadow-amber-200/40 hover:scale-105"
               >
                 Order Now
               </a>
@@ -83,25 +84,35 @@ export default function Home() {
         </div>
       </section>
       {/* Categories Section */}
-      <section className="py-16 sm:py-24 bg-background">
+      <section className="py-16 sm:py-24 relative">
+        <div className="absolute top-0 left-20 -translate-x-1/2 w-[300px] h-[400px] bg-amber-400/20 blur-3xl rounded-full" />
+
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl font-bold text-foreground mb-12 text-center">
             {t.shop.allCategories}
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {categories.map((category) => (
               <Link
                 key={category.id}
                 href={`/shop?category=${category.slug}`}
-                className="group relative rounded-2xl overflow-hidden h-64"
+                className="group relative h-72 rounded-3xl overflow-hidden transition-all duration-500 "
               >
-                <div className="absolute inset-0 bg-secondary group-hover:bg-secondary/80 transition-colors" />
-                <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
-                  <h3 className="text-2xl font-bold text-foreground mb-2">
+                {/* Background Image */}
+                <Image
+                  src={category.image}
+                  alt={category.name}
+                  fill
+                  className=" transition-transform duration-700 group-hover:scale-110"
+                />
+
+                {/* Bottom Text */}
+                <div className="absolute bottom-0 left-0 w-full p-6 translate-y-4 group-hover:translate-y-0 transition-all duration-500 group-hover:bg-black/60 rounded-l-full  ">
+                  <h3 className="text-xl font-bold text-[#e9b83e]">
                     {category.name}
                   </h3>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-sm text-white/80  p-1 mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                     {category.description}
                   </p>
                 </div>
@@ -112,7 +123,7 @@ export default function Home() {
       </section>
 
       {/* Featured Products Section */}
-      <section className="py-16 sm:py-24 bg-card">
+      <section className="py-16 sm:py-24 ">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between mb-12">
             <h2 className="text-4xl font-bold text-foreground">
