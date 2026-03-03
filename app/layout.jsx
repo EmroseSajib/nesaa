@@ -1,6 +1,4 @@
-import { Footer } from "@/components/Footer";
-import { Header } from "@/components/Header";
-import { Analytics } from "@vercel/analytics/next";
+
 import { Barrio, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "./LanguageContext";
@@ -35,12 +33,8 @@ export default function RootLayout({ children }) {
         className={`${geist.className}  font-sans antialiased flex flex-col min-h-screen`}
       >
         <LanguageProvider>
-          <Header />
-          <main className="flex-1 bg-gradient-to-br from-[#f8f5f0] via-[#f1ece5] to-[#e9e2d8]">
-            {children}
-          </main>
-          <Footer />
-          <Analytics />
+          {children}
+     
         </LanguageProvider>
       </body>
     </html>
