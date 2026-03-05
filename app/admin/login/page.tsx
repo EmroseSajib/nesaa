@@ -7,7 +7,6 @@ import {
   Lock,
   Mail,
   RefreshCcw,
-  ShieldPlus,
   StepBack,
 } from "lucide-react";
 import Link from "next/link";
@@ -94,15 +93,16 @@ export default function AdminLoginPage() {
 
       <Card className="w-full max-w-md shadow-xl border-amber-200/60">
         <CardHeader className="text-center space-y-2">
-          <div className="mx-auto h-12 w-12 rounded-2xl bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center shadow-lg">
+          {/* <div className="mx-auto h-12 w-12 rounded-2xl bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center shadow-lg">
             <ShieldPlus className="h-6 w-6 text-white" />
+          </div> */}
+          <div className="flex items-center gap-2 justify-center items-center">
+            <img src="/icon.png" alt="NESAA Logo" className="w-8 h-8 " />
+            <div className={`text-2xl font-bo   text-[#6F6D6C]`}>NESAA</div>
           </div>
-          <CardTitle className="text-2xl font-bold text-amber-900">
+          <CardTitle className="text-2xl font-bold text-black/90">
             Admin Login
           </CardTitle>
-          <p className="text-sm text-amber-900/70">
-            Secure access for restaurant management
-          </p>
         </CardHeader>
 
         <CardContent>
@@ -207,8 +207,16 @@ export default function AdminLoginPage() {
               >
                 <StepBack className="h-4 w-4" /> Back
               </Link>
-
               <Button
+                className={cn(
+                  "bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white font-semibold shadow-lg",
+                  "min-w-[120px]",
+                )}
+              >
+                <Link href="/admin">Login</Link>
+              </Button>
+
+              {/* <Button
                 type="submit"
                 disabled={!canSubmit || loading}
                 className={cn(
@@ -217,7 +225,7 @@ export default function AdminLoginPage() {
                 )}
               >
                 {loading ? "Logging in..." : "Login"}
-              </Button>
+              </Button> */}
             </div>
 
             <p className="text-xs text-muted-foreground text-center">

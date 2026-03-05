@@ -4,15 +4,11 @@ import {
   ArrowUpRight,
   Bell,
   Box,
-  CalendarDays,
   Clock,
   DollarSign,
-  Download,
-  Flame,
   Mail,
   PackagePlus,
   Percent,
-  Plus,
   ShoppingCart,
   Sparkles,
   Truck,
@@ -168,7 +164,7 @@ function GlassCard({ children, className = "" }) {
   return (
     <div
       className={[
-        "relative overflow-hidden rounded-3xl border border-white/20 bg-white/70 shadow-xl backdrop-blur-xl",
+        "relative overflow-hidden rounded-3xl border border-white/20  shadow-xl backdrop-blur-xl",
         "transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl",
         className,
       ].join(" ")}
@@ -244,52 +240,6 @@ export default function AdminDashboard() {
   return (
     <div className="min-h-screen bg-[radial-gradient(ellipse_at_top,#eef2ff_0%,#fdf2f8_35%,#ecfeff_70%,#f8fafc_100%)]">
       <div className="mx-auto  space-y-8 px-4 py-8 sm:px-6 lg:px-8">
-        {/* HEADER */}
-        <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
-          <div className="animate-[fadeIn_600ms_ease-out]">
-            <p className="inline-flex items-center gap-2 rounded-full bg-white/70 px-3 py-1 text-xs font-semibold text-gray-700 shadow-sm">
-              <Flame className="h-4 w-4 text-orange-500" />
-              NESAA Admin • Live Overview
-            </p>
-            <h1 className="mt-3 text-3xl font-extrabold tracking-tight text-gray-900">
-              Dashboard
-            </h1>
-            <p className="mt-1 text-sm text-gray-700">
-              Track orders, revenue, performance, and inventory at a glance.
-            </p>
-          </div>
-
-          <div className="flex flex-wrap items-center gap-2">
-            {/* range switch */}
-            <div className="inline-flex rounded-2xl bg-white/70 p-1 shadow-sm backdrop-blur">
-              {["7d", "30d", "90d"].map((k) => (
-                <button
-                  key={k}
-                  onClick={() => setRange(k)}
-                  className={[
-                    "rounded-xl px-3 py-1.5 text-sm font-bold transition",
-                    range === k
-                      ? "bg-gray-900 text-white shadow"
-                      : "text-gray-700 hover:bg-white/70",
-                  ].join(" ")}
-                >
-                  {k.toUpperCase()}
-                </button>
-              ))}
-            </div>
-
-            <SoftButton>
-              <CalendarDays className="h-4 w-4" />
-              {rangeLabel}
-            </SoftButton>
-
-            <PrimaryButton>
-              <Download className="h-4 w-4" />
-              Export
-            </PrimaryButton>
-          </div>
-        </div>
-
         {/* KPI */}
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {stats.map((s, idx) => {
@@ -341,16 +291,6 @@ export default function AdminDashboard() {
 
         {/* QUICK ACTIONS */}
         <GlassCard>
-          <CardHeader
-            title="Quick Actions"
-            subtitle="Common admin tasks to keep things moving"
-            right={
-              <SoftButton>
-                <Plus className="h-4 w-4" />
-                New
-              </SoftButton>
-            }
-          />
           <div className="grid gap-4 px-6 py-5 sm:grid-cols-2 lg:grid-cols-4">
             <button className="group rounded-3xl border border-white/40 bg-white/60 p-5 text-left shadow-sm transition hover:-translate-y-1 hover:bg-white hover:shadow-lg active:scale-[0.99]">
               <div className="inline-flex rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-500 p-3 text-white shadow-md">
@@ -545,123 +485,119 @@ export default function AdminDashboard() {
             </div>
           </GlassCard>
         </div>
+        {/* Recent Orders */}
+        <GlassCard className="lg:col-span-2">
+          <CardHeader
+            title="Recent Orders"
+            subtitle="Latest orders (NL-friendly payment methods)"
+            right={<SoftButton>View all</SoftButton>}
+          />
+          <div className="px-6 py-5">
+            <div className="-mx-2 overflow-x-auto">
+              <table className="w-full min-w-[720px] border-separate border-spacing-y-2 text-left">
+                <thead>
+                  <tr className="text-xs font-bold text-gray-600">
+                    <th className="px-2 py-2">Order</th>
+                    <th className="px-2 py-2">Customer</th>
+                    <th className="px-2 py-2">Status</th>
+                    <th className="px-2 py-2">Method</th>
+                    <th className="px-2 py-2">Time</th>
+                    <th className="px-2 py-2 text-right">Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {recentOrders.map((o) => (
+                    <tr key={o.id} className="rounded-2xl bg-white/60">
+                      <td className="px-2 py-3 font-extrabold text-gray-900">
+                        {o.id}
+                      </td>
+                      <td className="px-2 py-3 text-sm text-gray-700">
+                        {o.customer}
+                      </td>
+                      <td className="px-2 py-3">
+                        <StatusPill status={o.status} />
+                      </td>
+                      <td className="px-2 py-3 text-sm font-semibold text-gray-800">
+                        {o.method}
+                      </td>
+                      <td className="px-2 py-3 text-sm text-gray-700">
+                        {o.time}
+                      </td>
+                      <td className="px-2 py-3 text-right font-extrabold text-gray-900">
+                        {o.total}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            <div className="mt-4 flex items-center justify-between text-xs text-gray-600">
+              <span>Auto-refresh enabled</span>
+              <span className="inline-flex items-center gap-2 font-semibold">
+                <span className="inline-block h-2 w-2 rounded-full bg-emerald-500" />
+                Live
+              </span>
+            </div>
+          </div>
+        </GlassCard>
 
         {/* Orders + Inventory + Activity */}
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-          {/* Recent Orders */}
-          <GlassCard className="lg:col-span-2">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+          <GlassCard>
             <CardHeader
-              title="Recent Orders"
-              subtitle="Latest orders (NL-friendly payment methods)"
-              right={<SoftButton>View all</SoftButton>}
+              title="Low Stock Alerts"
+              subtitle="Restock soon"
+              right={<SoftButton>Manage</SoftButton>}
             />
-            <div className="px-6 py-5">
-              <div className="-mx-2 overflow-x-auto">
-                <table className="w-full min-w-[720px] border-separate border-spacing-y-2 text-left">
-                  <thead>
-                    <tr className="text-xs font-bold text-gray-600">
-                      <th className="px-2 py-2">Order</th>
-                      <th className="px-2 py-2">Customer</th>
-                      <th className="px-2 py-2">Status</th>
-                      <th className="px-2 py-2">Method</th>
-                      <th className="px-2 py-2">Time</th>
-                      <th className="px-2 py-2 text-right">Total</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {recentOrders.map((o) => (
-                      <tr key={o.id} className="rounded-2xl bg-white/60">
-                        <td className="px-2 py-3 font-extrabold text-gray-900">
-                          {o.id}
-                        </td>
-                        <td className="px-2 py-3 text-sm text-gray-700">
-                          {o.customer}
-                        </td>
-                        <td className="px-2 py-3">
-                          <StatusPill status={o.status} />
-                        </td>
-                        <td className="px-2 py-3 text-sm font-semibold text-gray-800">
-                          {o.method}
-                        </td>
-                        <td className="px-2 py-3 text-sm text-gray-700">
-                          {o.time}
-                        </td>
-                        <td className="px-2 py-3 text-right font-extrabold text-gray-900">
-                          {o.total}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-
-              <div className="mt-4 flex items-center justify-between text-xs text-gray-600">
-                <span>Auto-refresh enabled</span>
-                <span className="inline-flex items-center gap-2 font-semibold">
-                  <span className="inline-block h-2 w-2 rounded-full bg-emerald-500" />
-                  Live
-                </span>
-              </div>
+            <div className="px-6 py-5 space-y-3">
+              {lowStock.map((i) => (
+                <div
+                  key={i.sku}
+                  className="rounded-2xl bg-white/60 p-4 flex items-start justify-between gap-3"
+                >
+                  <div>
+                    <p className="text-sm font-extrabold text-gray-900">
+                      {i.name}
+                    </p>
+                    <p className="mt-1 text-xs text-gray-600">{i.sku}</p>
+                  </div>
+                  <span className="rounded-full bg-rose-100 px-3 py-1 text-xs font-extrabold text-rose-700 ring-1 ring-rose-200">
+                    {i.stock} left
+                  </span>
+                </div>
+              ))}
             </div>
           </GlassCard>
 
-          {/* Inventory + Activity */}
-          <div className="space-y-6">
-            <GlassCard>
-              <CardHeader
-                title="Low Stock Alerts"
-                subtitle="Restock soon"
-                right={<SoftButton>Manage</SoftButton>}
-              />
-              <div className="px-6 py-5 space-y-3">
-                {lowStock.map((i) => (
+          <GlassCard>
+            <CardHeader
+              title="Latest Activity"
+              subtitle="What happened recently"
+              right={<SoftButton>See more</SoftButton>}
+            />
+            <div className="px-6 py-5 space-y-3">
+              {activity.map((a, idx) => {
+                const Icon = a.icon;
+                return (
                   <div
-                    key={i.sku}
-                    className="rounded-2xl bg-white/60 p-4 flex items-start justify-between gap-3"
+                    key={idx}
+                    className="flex items-start gap-3 rounded-2xl bg-white/60 p-4"
                   >
+                    <div className="rounded-2xl bg-gradient-to-r from-gray-900 to-black p-2.5 text-white shadow">
+                      <Icon className="h-4 w-4" />
+                    </div>
                     <div>
                       <p className="text-sm font-extrabold text-gray-900">
-                        {i.name}
+                        {a.title}
                       </p>
-                      <p className="mt-1 text-xs text-gray-600">{i.sku}</p>
+                      <p className="mt-1 text-xs text-gray-600">{a.meta}</p>
                     </div>
-                    <span className="rounded-full bg-rose-100 px-3 py-1 text-xs font-extrabold text-rose-700 ring-1 ring-rose-200">
-                      {i.stock} left
-                    </span>
                   </div>
-                ))}
-              </div>
-            </GlassCard>
-
-            <GlassCard>
-              <CardHeader
-                title="Latest Activity"
-                subtitle="What happened recently"
-                right={<SoftButton>See more</SoftButton>}
-              />
-              <div className="px-6 py-5 space-y-3">
-                {activity.map((a, idx) => {
-                  const Icon = a.icon;
-                  return (
-                    <div
-                      key={idx}
-                      className="flex items-start gap-3 rounded-2xl bg-white/60 p-4"
-                    >
-                      <div className="rounded-2xl bg-gradient-to-r from-gray-900 to-black p-2.5 text-white shadow">
-                        <Icon className="h-4 w-4" />
-                      </div>
-                      <div>
-                        <p className="text-sm font-extrabold text-gray-900">
-                          {a.title}
-                        </p>
-                        <p className="mt-1 text-xs text-gray-600">{a.meta}</p>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </GlassCard>
-          </div>
+                );
+              })}
+            </div>
+          </GlassCard>
         </div>
 
         {/* Tailwind keyframes (no config needed) */}
