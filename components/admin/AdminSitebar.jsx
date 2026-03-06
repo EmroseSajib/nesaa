@@ -41,7 +41,7 @@ export default function AdminSidebar() {
         <div className="pointer-events-none absolute -top-24 -right-16 h-56 w-56 rounded-full bg-indigo-500/30 blur-3xl animate-[floatB_9s_ease-in-out_infinite]" />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/10 to-transparent" />
 
-        <div className="relative flex items-center gap-3">
+        <div className="relative flex items-center gap-3 max-h-6">
           <div className="h-11 w-11 rounded-2xl bg-gradient-to-br from-fuchsia-500 via-indigo-500 to-emerald-500 shadow-lg ring-1 ring-white/20" />
           <div>
             <div className="font-extrabold tracking-wide text-white drop-shadow">
