@@ -5,7 +5,8 @@ const Banner = () => {
     <div>
       <section className="relative min-h-screen flex items-center overflow-hidden  text-gray-900">
         {/* Soft Glow Background */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-amber-400/20 blur-3xl rounded-full" />
+        <div className="absolute top-0 left-1/2 translate-x-1/2 w-[700px] h-[700px] bg-amber-400/20 blur-3xl rounded-full" />
+        <div className="absolute bottom-10 left-1/5 translate-x-1/2 w-[700px] h-[700px] bg-amber-400/20 blur-3xl rounded-full" />
 
         <div className="relative container mx-auto px-6 grid lg:grid-cols-2 items-center gap-16">
           {/* LEFT CONTENT */}
@@ -16,12 +17,22 @@ const Banner = () => {
             </span> */}
 
             {/* Heading */}
-            <h1 className=" text-5xl lg:text-6xl font-extrabold leading-tight">
-              <span className="font-offer text-8xl">Black Friday</span>
-              <br />
-              <span className="text-gray-900 font-offer">Super Sale</span>
-            </h1>
+            <h1 className="relative leading-none">
+              {/* small top text */}
+              <span className="block text-sm tracking-[0.4em] text-gray-500 uppercase mb-3">
+                Limited Offer
+              </span>
 
+              {/* main title */}
+              <span className="block font-poster text-7xl lg:text-8xl font-extrabold bg-gradient-to-r from-black via-orange-500 to-red-700 bg-clip-text text-transparent drop-shadow-lg">
+                BLACK FRIDAY
+              </span>
+
+              {/* subtitle */}
+              <span className="block font-offer  text-4xl lg:text-6xl text-gray-900 tracking-wide mt-2">
+                SUPER SALE
+              </span>
+            </h1>
             {/* Subtitle */}
             <p className="text-gray-700 text-lg max-w-xl">
               Premium wholesale & single piece bags at exclusive seasonal
@@ -41,7 +52,7 @@ const Banner = () => {
                 href="/shop"
                 className="px-8 py-4 border border-gray-300 hover:bg-gray-900 hover:text-white transition-all duration-300 rounded-lg font-semibold"
               >
-                View Collection
+                Wholesale Only
               </a>
             </div>
           </div>

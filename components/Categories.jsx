@@ -7,7 +7,7 @@ const CategoriesSection = () => {
   return (
     <div>
       <section className="py-16 sm:py-24 relative">
-        <div className="absolute top-0 left-0 translate-x-12/10 w-[400px] h-[400px] bg-amber-400/20 blur-3xl rounded-full" />
+        {/* <div className="absolute top-0 left-0 translate-x-12/10 w-[400px] h-[400px] bg-amber-400/20 blur-3xl rounded-full" /> */}
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl font-bold text-foreground mb-12 text-center">

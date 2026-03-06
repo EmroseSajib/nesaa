@@ -1,4 +1,3 @@
-
 import { Barrio, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "./LanguageContext";
@@ -32,10 +31,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${geist.className}  font-sans antialiased flex flex-col min-h-screen`}
       >
-        <LanguageProvider>
-          {children}
-     
-        </LanguageProvider>
+        <LanguageProvider>{children}</LanguageProvider>
       </body>
     </html>
   );

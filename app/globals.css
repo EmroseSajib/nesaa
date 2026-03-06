@@ -134,7 +134,7 @@
 
 @theme inline {
   --font-sans: "Geist", "Geist Fallback";
-  /* --font-offer: "Barrio", "For Offer Fallback"; */
+  --font-offer: "Barrio", "For Offer Fallback";
   --font-mono: "Geist Mono", "Geist Mono Fallback";
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));

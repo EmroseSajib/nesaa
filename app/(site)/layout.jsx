@@ -6,7 +6,7 @@ export default function SiteLayout({ children }) {
     <>
       <main>
         <Header />
-        <main className="flex-1 bg-gradient-to-br from-[#f8f5f0] via-[#f1ece5] to-[#e9e2d8] pt-10">
+        <main className="flex-1 bg-gradient-to-br from-[#f8f5f0] via-[#f1ece5] to-[#e9e2d8] ">
           {children}
         </main>
         <Footer />
