@@ -22,6 +22,7 @@ export function Header() {
   const navLinks = useMemo(
     () => [
       { href: "/", label: t.nav.home },
+      { href: "/b2b", label: t.nav.b2b },
       { href: "/shop", label: t.nav.shop },
       { href: "/about", label: t.nav.about },
       { href: "/donations", label: t.nav.donate },

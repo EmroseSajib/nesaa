@@ -1,5 +1,6 @@
 "use client";
 
+import WhyChooseUsSection from "@/components/ChooseUsSection";
 import { testimonials } from "@/lib/mockData";
 import { useState } from "react";
 import Banner from "../../components/Banner";
@@ -14,6 +15,7 @@ export default function Home() {
   return (
     <div className="w-full">
       <Banner />
+      <WhyChooseUsSection />
       <CategoriesSection />
       {/* Featured Products Section */}
       <Feature />
