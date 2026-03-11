@@ -1,162 +1,148 @@
 "use client";
 
-import { useLanguage } from "@/app/LanguageContext";
-import { donationTiers } from "@/lib/mockData";
-import { Globe, Heart, TreePine, Users } from "lucide-react";
+import { ArrowRight, HandHeart, Heart, Sparkles } from "lucide-react";
+import Link from "next/link";
 
-export default function DonationsPage() {
-  const { t } = useLanguage();
-
-  const impacts = [
-    { icon: TreePine, label: "Trees Planted", value: "5,234" },
-    { icon: Users, label: "Lives Supported", value: "892" },
-    { icon: Globe, label: "Carbon Offset (tons)", value: "1,245" },
-  ];
-
+export default function DonatePage() {
   return (
-    <div className="min-h-screen bg-background">
-      {/* Hero Section */}
-      <section className="bg-accent text-accent-foreground py-16 sm:py-24 mt-10">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <Heart className="w-16 h-16 mx-auto mb-6 opacity-80" />
-          <h1 className="text-4xl sm:text-5xl font-bold mb-4">
-            {t.donations.title}
+    <div className="relative min-h-screen bg-[#e9e2d8] overflow-hidden">
+      {/* Premium glow background */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-amber-400/20 blur-3xl rounded-full" />
+      <div className="absolute bottom-10 left-1/5 -translate-x-1/2 w-[700px] h-[700px] bg-amber-400/20 blur-3xl rounded-full" />
+
+      <div className="relative container mx-auto px-6 py-20">
+        {/* Hero */}
+        <div className="max-w-4xl mx-auto text-center mb-16">
+          <span className="inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/60 backdrop-blur-lg px-5 py-2 text-sm text-[#7b5d42] shadow-sm mb-6">
+            <Sparkles className="w-4 h-4" />
+            NESAA Donations
+          </span>
+
+          <h1 className="text-5xl lg:text-6xl font-semibold tracking-tight text-[#3b2e24] mb-6">
+            Giving with Purpose,
+            <br />
+            Creating Real Impact
           </h1>
-          <p className="text-lg opacity-90 max-w-2xl mx-auto">
-            {t.donations.description}
+
+          <p className="max-w-2xl mx-auto text-[#6e5a4b] text-lg leading-8">
+            At NESAA, we believe in the power of collective action. Every
+            purchase helps create high-quality products while supporting a more
+            dignified future for the people behind them.
           </p>
         </div>
-      </section>
 
-      {/* Impact Stats */}
-      <section className="py-16 sm:py-24 bg-card">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-foreground mb-12 text-center">
-            {t.donations.impact}
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {impacts.map((impact, index) => {
-              const Icon = impact.icon;
-              return (
-                <div key={index} className="text-center">
-                  <Icon className="w-12 h-12 text-accent mx-auto mb-4" />
-                  <p className="text-4xl font-bold text-foreground mb-2">
-                    {impact.value}
-                  </p>
-                  <p className="text-muted-foreground">{impact.label}</p>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Donation Tiers */}
-      <section className="py-16 sm:py-24 bg-background">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-foreground mb-12 text-center">
-            Choose Your Impact Level
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {donationTiers.map((tier) => (
-              <div
-                key={tier.id}
-                className="rounded-2xl border-2 border-border p-8 text-center hover:border-accent hover:shadow-lg transition-all"
-              >
-                <div
-                  className={`inline-block w-12 h-12 rounded-full mb-4 opacity-80`}
-                  style={{
-                    backgroundColor: `hsl(${tier.color === "green" ? "162, 45%" : tier.color === "emerald" ? "142, 72%" : "167, 69%"}, 60%)`,
-                  }}
-                />
-                <h3 className="text-2xl font-bold text-foreground mb-2">
-                  {tier.name}
-                </h3>
-                <p className="text-4xl font-bold text-accent mb-2">
-                  ${tier.amount}
-                </p>
-                <p className="text-muted-foreground mb-6">{tier.description}</p>
-                <button className="w-full bg-primary text-primary-foreground py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors">
-                  Donate ${tier.amount}
-                </button>
-              </div>
-            ))}
-          </div>
-
-          {/* Custom Amount */}
-          <div className="mt-12 max-w-md mx-auto">
-            <div className="bg-card rounded-2xl border border-border p-8">
-              <p className="text-center font-semibold text-foreground mb-4">
-                Or enter a custom amount
-              </p>
-              <div className="flex gap-4">
-                <div className="flex-1 relative">
-                  <span className="absolute left-3 top-3 text-foreground">
-                    $
-                  </span>
-                  <input
-                    type="number"
-                    placeholder="250"
-                    className="w-full pl-7 pr-4 py-3 border border-border rounded-lg bg-background"
-                  />
-                </div>
-                <button className="px-6 py-3 bg-accent text-accent-foreground rounded-lg font-semibold hover:bg-accent/90 transition-colors">
-                  Donate
-                </button>
-              </div>
+        {/* Main cards */}
+        <div className="grid lg:grid-cols-2 gap-8 mb-12">
+          <div className="rounded-[32px] border border-white/40 bg-white/65 backdrop-blur-xl p-8 lg:p-10 shadow-[0_10px_40px_rgba(59,46,36,0.08)]">
+            <div className="w-14 h-14 rounded-2xl bg-amber-500/10 flex items-center justify-center mb-6">
+              <Heart className="w-7 h-7 text-amber-700" />
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* About Our Donations */}
-      <section className="py-16 sm:py-24 bg-card">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <h2 className="text-3xl font-bold text-foreground mb-6">
-              How Your Donation Helps
+            <h2 className="text-3xl font-semibold text-[#3b2e24] mb-4">
+              Why We Donate
             </h2>
 
-            <div className="space-y-6 text-muted-foreground">
-              <p>
-                Every donation to NESAA goes directly to our environmental and
-                community initiatives. We partner with verified organizations to
-                ensure maximum impact.
+            <p className="text-[#6e5a4b] leading-8 mb-4">
+              Our mission is simple: to ensure that everyone, from buyer to
+              maker, can live with dignity.
+            </p>
+
+            <p className="text-[#6e5a4b] leading-8">
+              Through NESAA, your support goes beyond products. It helps build
+              stronger communities, improve living conditions, and create
+              opportunities for a better future.
+            </p>
+          </div>
+
+          <div className="rounded-[32px] border border-white/40 bg-[#3b2e24] p-8 lg:p-10 shadow-[0_10px_40px_rgba(59,46,36,0.12)]">
+            <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center mb-6">
+              <HandHeart className="w-7 h-7 text-[#e8c79f]" />
+            </div>
+
+            <h2 className="text-3xl font-semibold text-white mb-4">
+              Stronger Together: NESAA & Baba Aid
+            </h2>
+
+            <p className="text-white/80 leading-8 mb-4">
+              NESAA partners with Baba Aid, a Dutch foundation dedicated to
+              sustainable development and poverty alleviation in Bangladesh.
+            </p>
+
+            <p className="text-white/80 leading-8">
+              Baba Aid supports projects in education, healthcare, and economic
+              empowerment, helping create lasting positive change in communities
+              across Bangladesh.
+            </p>
+          </div>
+        </div>
+
+        {/* Highlight section */}
+        <div className="rounded-[32px] border border-white/40 bg-white/60 backdrop-blur-xl p-8 lg:p-12 shadow-[0_10px_40px_rgba(59,46,36,0.08)] mb-12">
+          <div className="grid lg:grid-cols-3 gap-6">
+            <div className="rounded-3xl bg-[#f7f1ea] p-6 border border-[#eadfce]">
+              <h3 className="text-xl font-semibold text-[#3b2e24] mb-3">
+                Education
+              </h3>
+              <p className="text-[#6e5a4b] leading-7">
+                Supporting learning opportunities that help children and
+                families build a stronger future.
               </p>
+            </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="p-4 bg-background rounded-lg border border-border">
-                  <h3 className="font-semibold text-foreground mb-2">
-                    Environmental Programs
-                  </h3>
-                  <p className="text-sm">
-                    Reforestation, ocean cleanup, and carbon offset initiatives
-                    in partnership with verified environmental organizations.
-                  </p>
-                </div>
+            <div className="rounded-3xl bg-[#f7f1ea] p-6 border border-[#eadfce]">
+              <h3 className="text-xl font-semibold text-[#3b2e24] mb-3">
+                Healthcare
+              </h3>
+              <p className="text-[#6e5a4b] leading-7">
+                Contributing to better access to care and healthier living
+                conditions in vulnerable communities.
+              </p>
+            </div>
 
-                <div className="p-4 bg-background rounded-lg border border-border">
-                  <h3 className="font-semibold text-foreground mb-2">
-                    Community Support
-                  </h3>
-                  <p className="text-sm">
-                    Supporting artisan communities and fair-trade leather
-                    production practices across the globe.
-                  </p>
-                </div>
-              </div>
-
-              <p>
-                100% transparency: You'll receive quarterly reports on how your
-                donations are being used. NESAA is registered as a B-Corp and
-                maintains the highest environmental standards.
+            <div className="rounded-3xl bg-[#f7f1ea] p-6 border border-[#eadfce]">
+              <h3 className="text-xl font-semibold text-[#3b2e24] mb-3">
+                Empowerment
+              </h3>
+              <p className="text-[#6e5a4b] leading-7">
+                Encouraging economic independence through meaningful support and
+                sustainable development.
               </p>
             </div>
           </div>
         </div>
-      </section>
+
+        {/* CTA */}
+        <div className="max-w-3xl mx-auto text-center rounded-[32px] border border-white/40 bg-white/65 backdrop-blur-xl p-8 lg:p-12 shadow-[0_10px_40px_rgba(59,46,36,0.08)]">
+          <h2 className="text-3xl lg:text-4xl font-semibold text-[#3b2e24] mb-4">
+            Every Purchase Can Make a Difference
+          </h2>
+
+          <p className="text-[#6e5a4b] text-lg leading-8 mb-8">
+            With NESAA, beauty and purpose come together. Your support helps us
+            contribute directly to initiatives that uplift communities and
+            create lasting impact.
+          </p>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link
+              href="/shop"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-[#3b2e24] px-7 py-3.5 text-white font-medium hover:bg-[#2d221a] transition"
+            >
+              Shop with Purpose
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+
+            <a
+              href="https://www.babaaid.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-[#3b2e24]/15 bg-white/80 px-7 py-3.5 text-[#3b2e24] font-medium hover:bg-white transition"
+            >
+              Learn About Baba Aid
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

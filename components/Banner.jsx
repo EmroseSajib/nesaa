@@ -29,7 +29,7 @@ const Banner = () => {
               </span>
 
               {/* subtitle */}
-              <span className="block font-offer  text-4xl lg:text-6xl text-gray-900 tracking-wide mt-2">
+              <span className="block tracking-[0.4em]   text-4xl lg:text-6xl text-gray-900  mt-2">
                 SUPER SALE
               </span>
             </h1>

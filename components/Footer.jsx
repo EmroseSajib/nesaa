@@ -1,11 +1,11 @@
-'use client'
+"use client";
 
-import Link from 'next/link'
-import { useLanguage } from '@/app/LanguageContext'
-import { Mail, Phone, MapPin } from 'lucide-react'
+import { useLanguage } from "@/app/LanguageContext";
+import { Mail, MapPin, Phone } from "lucide-react";
+import Link from "next/link";
 
 export function Footer() {
-  const { t } = useLanguage()
+  const { t } = useLanguage();
 
   return (
     <footer className="bg-primary text-primary-foreground">
@@ -23,9 +23,12 @@ export function Footer() {
           <div>
             <h4 className="font-semibold mb-4">{t.nav.shop}</h4>
             <ul className="space-y-2 text-sm">
-              {['Bags', 'Belts', 'Wallets', 'Accessories'].map(item => (
+              {["Bags", "Belts", "Wallets", "Accessories"].map((item) => (
                 <li key={item}>
-                  <Link href="#" className="opacity-80 hover:opacity-100 transition-opacity">
+                  <Link
+                    href="#"
+                    className="opacity-80 hover:opacity-100 transition-opacity"
+                  >
                     {item}
                   </Link>
                 </li>
@@ -38,17 +41,26 @@ export function Footer() {
             <h4 className="font-semibold mb-4">Company</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/about" className="opacity-80 hover:opacity-100 transition-opacity">
+                <Link
+                  href="/about"
+                  className="opacity-80 hover:opacity-100 transition-opacity"
+                >
                   {t.nav.about}
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="opacity-80 hover:opacity-100 transition-opacity">
+                <Link
+                  href="/contact"
+                  className="opacity-80 hover:opacity-100 transition-opacity"
+                >
                   {t.nav.contact}
                 </Link>
               </li>
               <li>
-                <Link href="/donations" className="opacity-80 hover:opacity-100 transition-opacity">
+                <Link
+                  href="/donations"
+                  className="opacity-80 hover:opacity-100 transition-opacity"
+                >
                   {t.nav.donate}
                 </Link>
               </li>
@@ -65,11 +77,15 @@ export function Footer() {
               </li>
               <li className="flex items-start gap-2">
                 <Phone className="w-4 h-4 mt-1 flex-shrink-0" />
-                <span>+1 (555) 000-0000</span>
+                <span>0687117038</span>
               </li>
               <li className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 mt-1 flex-shrink-0" />
-                <span>123 Leather Lane<br />New York, NY 10001</span>
+                <span>
+                  123 Leather Lane
+                  <br />
+                  New York, NY 10001
+                </span>
               </li>
             </ul>
           </div>
@@ -82,12 +98,18 @@ export function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center text-sm opacity-80">
           <p>&copy; 2024 NESAA. All rights reserved.</p>
           <div className="flex gap-6 mt-4 md:mt-0">
-            <Link href="#" className="hover:opacity-100 transition-opacity">Privacy</Link>
-            <Link href="#" className="hover:opacity-100 transition-opacity">Terms</Link>
-            <Link href="#" className="hover:opacity-100 transition-opacity">Cookies</Link>
+            <Link href="#" className="hover:opacity-100 transition-opacity">
+              Privacy
+            </Link>
+            <Link href="#" className="hover:opacity-100 transition-opacity">
+              Terms
+            </Link>
+            <Link href="#" className="hover:opacity-100 transition-opacity">
+              Cookies
+            </Link>
           </div>
         </div>
       </div>
     </footer>
-  )
+  );
 }
