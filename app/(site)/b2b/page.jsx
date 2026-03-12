@@ -127,11 +127,12 @@ export default function B2BPage() {
                 key={product.id}
                 className="rounded-[28px] border border-white/40 bg-white/65 backdrop-blur-xl overflow-hidden shadow-[0_10px_30px_rgba(59,46,36,0.08)]"
               >
-                <div className="relative h-[280px]">
+                <div className="relative h-[280px] item-center flex justify-center">
                   <Image
                     src={product.image}
                     alt={product.name}
-                    fill
+                    width={280}
+                    height={180}
                     className="object-cover"
                   />
                 </div>

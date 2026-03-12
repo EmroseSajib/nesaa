@@ -57,10 +57,10 @@ function ShopContent() {
 
       <div className="relative">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 pt-10">
             {/* Sidebar Filters */}
-            <div className={`${showFilters ? "block" : "hidden"} lg:block`}>
-              <div className="sticky top-24 rounded-[28px] border border-white/40 bg-white/60 backdrop-blur-xl p-6 shadow-[0_10px_30px_rgba(59,46,36,0.08)]">
+            <div className={`${showFilters ? "block" : "hidden"} lg:block `}>
+              <div className=" sticky top-24 rounded-[28px] border border-white/40 bg-white/60 backdrop-blur-xl p-6  shadow-[0_10px_30px_rgba(59,46,36,0.08)]">
                 <div className="flex items-center gap-2 mb-6">
                   <SlidersHorizontal className="w-4 h-4 text-[#8a6a4a]" />
                   <h2 className="text-lg font-semibold text-[#3b2e24]">

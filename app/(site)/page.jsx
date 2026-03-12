@@ -1,7 +1,9 @@
 "use client";
 
+import BrandStory from "@/components/BrandStory";
 import WhyChooseUsSection from "@/components/ChooseUsSection";
 import CustomerFeedback from "@/components/CustomerFeedback";
+import DonationSection from "@/components/DonationSection";
 import WholesaleOpportunities from "@/components/WholesaleOpportunities ";
 import { useState } from "react";
 import Banner from "../../components/Banner";
@@ -17,14 +19,16 @@ export default function Home() {
     <div className="w-full">
       <Banner />
       <WhyChooseUsSection />
-      <CategoriesSection />
-      {/* Featured Products Section */}
       <Feature />
+      <CategoriesSection />
+      <BrandStory />
+      {/* Featured Products Section */}
 
       {/* Testimonials Section */}
       <CustomerFeedback />
+      <DonationSection />
       {/* CTA Section */}
-   <WholesaleOpportunities/>
+      <WholesaleOpportunities />
     </div>
   );
 }

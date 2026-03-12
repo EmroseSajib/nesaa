@@ -34,14 +34,14 @@ const CategoriesSection = () => {
             <Link
               key={category.id}
               href={`/shop?category=${category.slug}`}
-              className="group relative h-[380px] rounded-[30px] overflow-hidden border border-white/30 bg-white/20 backdrop-blur-sm shadow-[0_10px_30px_rgba(59,46,36,0.08)]"
+              className="group relative h-[380px] rounded-[30px] overflow-hidden border border-white/30 bg-white/20 backdrop-blur-sm shadow-[0_10px_30px_rgba(59,46,36,0.08)] flex justify-center items-center"
             >
               {/* Image */}
               <Image
                 src={category.image}
                 alt={category.name}
-                width={300}
-                height={300}
+                width={280}
+                height={180}
                 className="object-cover transition-transform duration-700 group-hover:scale-110"
               />
 

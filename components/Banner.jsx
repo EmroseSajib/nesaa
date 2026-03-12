@@ -49,7 +49,7 @@ const Banner = () => {
               </a>
 
               <a
-                href="/shop"
+                href="/b2b"
                 className="px-8 py-4 border border-gray-300 hover:bg-gray-900 hover:text-white transition-all duration-300 rounded-lg font-semibold"
               >
                 Wholesale Only
